@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   version = "1.3">
+   <BuildAction>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForRunning = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B02F1707A5F1A86C2B9F8FCB"
+               BuildableName = "neuter-plus"
+               BlueprintName = "neuter-plus"
+               ReferencedContainer = "container:neuter-plus.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <LaunchAction
+      useCustomWorkingDirectory = "YES"
+      buildConfiguration = "Debug"
+      customWorkingDirectory = "/Users/daniel/Sites/Projects/mac_iPhone_dev/neuter-plus/Tests">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "B02F1707A5F1A86C2B9F8FCB"
+            BuildableName = "neuter-plus"
+            BlueprintName = "neuter-plus"
+            ReferencedContainer = "container:neuter-plus.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "--input"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "root.js"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--output"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "test.js"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
+   </LaunchAction>
+</Scheme>

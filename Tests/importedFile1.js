@@ -1,0 +1,1 @@
+window.importedFile1 = true;

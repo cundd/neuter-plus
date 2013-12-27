@@ -1,0 +1,1 @@
+window.nested.file1 = true;
