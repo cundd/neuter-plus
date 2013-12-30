@@ -37,20 +37,6 @@ StringDictionary FileParser::getRequiredFileIdentifiers(string filePath) {
 	return requiredFiles;
 }
 
-string FileParser::findAndReplaceInString(std::string input, std::string search, std::string replace) {
-	if (input.empty()) {
-		return "";
-	}
-	for (size_t pos = 0; ; pos += replace.length()) {
-		pos = input.find(search, pos);
-		if (pos == string::npos) break;
-
-		input.erase(pos, search.length());
-		input.insert(pos, replace);
-	}
-	return input;
-}
-
 string FileParser::combineFilesRecursive(string rootFile) {
 	string rootFilePath = rootFile;
 	string mergedSubRequiredFileContent = "";
@@ -65,24 +51,27 @@ string FileParser::combineFilesRecursive(string rootFile) {
 	for (StringDictionary::iterator it = requiredFileIdentifiers.begin(); it != requiredFileIdentifiers.end(); ++it) {
 		string fileIdentifier = it->first;
 		string fileIncludeCode = it->second;
-		mergedSubRequiredFileContent = "";
+		mergedSubRequiredFileContent = separator;
 
 		for (string filePath : resolveFileIdentifier(fileIdentifier)) {
 			++combineFilesRecursiveDepth;
-			string coc = combineFilesRecursive(filePath);
+			string subRequiredFileContent = combineFilesRecursive(filePath);
 			--combineFilesRecursiveDepth;
+
+#if CUNDD_DEBUG
 			pad(); cout << "====================================================================" << endl;
 			pad(); cout << "--------------------------------------------------------------------" << endl;
 			pad(); cout << "combineFilesRecursive: " << filePath << endl;
 			pad(); cout << "--------------------------------------------------------------------" << endl;
 			pad(); cout << coc << endl << endl;
 			pad(); cout << "--------------------------------------------------------------------" << endl;
+#endif
 
-			mergedSubRequiredFileContent = mergedSubRequiredFileContent + coc + separator;
+			mergedSubRequiredFileContent = mergedSubRequiredFileContent + subRequiredFileContent + separator;
 
 //			mergedSubRequiredFileContent = mergedSubRequiredFileContent
 //					+ wrapBefore
-//					+ "/*" + findAndReplaceInString(fileIncludeCode, "/", "\\/") + "// */"
+//					+ "/*" + StringUtility::findAndReplaceInString(fileIncludeCode, "/", "\\/") + "// */"
 //					+ combineFilesRecursive(filePath)
 //					+ wrapAfter
 //					+ separator;
@@ -104,7 +93,7 @@ string FileParser::combineFilesRecursive(string rootFile) {
 
 		mergedSubRequiredFileContent =
 				wrapBefore
-						+ "/*" + findAndReplaceInString(fileIncludeCode, "/", "\\/") + "// */"
+						+ "/*" + StringUtility::findAndReplaceInString(fileIncludeCode, "/", "\\/") + "// */"
 						+ mergedSubRequiredFileContent
 						+ wrapAfter
 						+ separator;
@@ -113,12 +102,12 @@ string FileParser::combineFilesRecursive(string rootFile) {
 		pad(); cout << "replace " << fileIncludeCode << endl;
 
 		string oldRootFileContents = rootFileContents;
-		rootFileContents = findAndReplaceInString(rootFileContents, fileIncludeCode, mergedSubRequiredFileContent);
+		rootFileContents = StringUtility::findAndReplaceInString(rootFileContents, fileIncludeCode, mergedSubRequiredFileContent);
 		if (oldRootFileContents == rootFileContents) {
 			pad(); cout << "WARNING: file contents of " << rootFilePath << " did not change by replace" << endl;
 		}
 
-#if 1
+#if CUNDD_DEBUG
 		pad(); cout << "--------------------------------------------------------------------" << endl;
 		pad(); cout << "New root file contents after replacing " << fileIdentifier << ":" << endl;
 		pad(); cout << rootFileContents << endl << endl;
@@ -169,7 +158,7 @@ vector<string> FileParser::resolveFileIdentifierPattern(string fileIdentifier) {
 	string relativePath;
 	size_t basePathLength = basePath.length();
 	glob_t glob_result;
-	glob((basePath + fileIdentifier).c_str(), GLOB_TILDE, NULL, &glob_result);
+	glob((basePath + fileIdentifier + ".js").c_str(), GLOB_TILDE, NULL, &glob_result);
 
 	for (unsigned int i = 0; i < glob_result.gl_pathc; ++i) {
 		relativePath = string(glob_result.gl_pathv[i]);

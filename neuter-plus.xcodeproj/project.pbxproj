@@ -38,6 +38,7 @@
 		B02F1CE5F81C0B9143C5FE70 /* FileNotFoundException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileNotFoundException.cpp; sourceTree = "<group>"; };
 		B02F1D59E55D06E91485057A /* neuter-plus */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "neuter-plus"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B02F1DB8E5D0B90B548B9CA5 /* Exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exception.cpp; sourceTree = "<group>"; };
+		B02F1DF45F7E895D0FC16848 /* Utilities */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Utilities; sourceTree = "<group>"; };
 		B02F1ED07E4FE68AC1F954B0 /* FileNotFoundException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileNotFoundException.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +83,7 @@
 				B02F1ED07E4FE68AC1F954B0 /* FileNotFoundException.h */,
 				B02F18DE9C6C27178D957930 /* FileParser.cpp */,
 				B02F1403BF3916D45FF8C6F2 /* FileParser.h */,
+				B02F1DF45F7E895D0FC16848 /* Utilities */,
 			);
 			path = "neuter-plus";
 			sourceTree = "<group>";

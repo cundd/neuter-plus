@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include "String.h"
 #include "FileParser.h"
 
 using namespace std;

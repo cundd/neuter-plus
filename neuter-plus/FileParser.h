@@ -21,6 +21,7 @@
 
 #include "FileNotFoundException.h"
 #include "Core.h"
+#include "Utilities/String.h"
 
 using namespace std;
 
