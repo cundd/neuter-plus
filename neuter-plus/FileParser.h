@@ -42,6 +42,7 @@ namespace Cundd {
 
 		static int combineFilesRecursiveDepth;
 
+
 	public:
 		string combineFilesRecursive(string rootFile);
 		void setBasePath(string newBasePath);

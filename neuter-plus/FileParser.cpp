@@ -7,7 +7,6 @@
 //
 
 #include "FileParser.h"
-#include <iomanip>
 
 using namespace std;
 
@@ -26,9 +25,10 @@ StringDictionary FileParser::getRequiredFileIdentifiers(string filePath) {
 	if (inputFile.is_open()) {
 		while (getline(inputFile, line)) {
 			if (regex_match(line, result, pattern)) {
-
+#if CUNDD_DEBUG
 				pad(); cout << "====================================================================" << endl;
-				pad(); cout << "Matching:" << result[0] << endl;
+				pad(); cout << "Matching: " << result[0] << endl;
+#endif
 				requiredFiles[result[1]] = result[0];
 			}
 		}
@@ -68,48 +68,33 @@ string FileParser::combineFilesRecursive(string rootFile) {
 #endif
 
 			mergedSubRequiredFileContent = mergedSubRequiredFileContent + subRequiredFileContent + separator;
-
-//			mergedSubRequiredFileContent = mergedSubRequiredFileContent
-//					+ wrapBefore
-//					+ "/*" + StringUtility::findAndReplaceInString(fileIncludeCode, "/", "\\/") + "// */"
-//					+ combineFilesRecursive(filePath)
-//					+ wrapAfter
-//					+ separator;
 		}
 
 #if CUNDD_DEBUG
-		cout << "--------------------------------------------------------------------" << endl;
-		cout << "File contents:" << endl;
-		cout << rootFileContents << endl << endl;
+		pad(); cout << "--------------------------------------------------------------------" << endl;
+		pad(); cout << "File contents:" << endl;
+		pad(); cout << rootFileContents << endl << endl;
 #endif
 
 #if CUNDD_DEBUG
-		cout << "--------------------------------------------------------------------" << endl;
-		cout << "Merged contents:" << endl;
-		cout << mergedSubRequiredFileContent << endl << endl;
-#endif
+		pad(); cout << "--------------------------------------------------------------------" << endl;
+		pad(); cout << "Merged contents:" << endl;
+		pad(); cout << mergedSubRequiredFileContent << endl << endl;
 
+		pad(); cout << "--------------------------------------------------------------------" << endl;
 		pad(); cout << "replace " << fileIncludeCode << endl;
-
+#endif
 		mergedSubRequiredFileContent =
 				wrapBefore
 						+ "/*" + StringUtility::findAndReplaceInString(fileIncludeCode, "/", "\\/") + "// */"
 						+ mergedSubRequiredFileContent
 						+ wrapAfter
 						+ separator;
-
-
-		pad(); cout << "replace " << fileIncludeCode << endl;
-
-		string oldRootFileContents = rootFileContents;
 		rootFileContents = StringUtility::findAndReplaceInString(rootFileContents, fileIncludeCode, mergedSubRequiredFileContent);
-		if (oldRootFileContents == rootFileContents) {
-			pad(); cout << "WARNING: file contents of " << rootFilePath << " did not change by replace" << endl;
-		}
 
 #if CUNDD_DEBUG
 		pad(); cout << "--------------------------------------------------------------------" << endl;
-		pad(); cout << "New root file contents after replacing " << fileIdentifier << ":" << endl;
+		pad(); cout << "New root file contents after replacing " << fileIncludeCode << ":" << endl;
 		pad(); cout << rootFileContents << endl << endl;
 		pad(); cout << "--------------------------------------------------------------------" << endl;
 #endif

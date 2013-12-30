@@ -7,3 +7,4 @@ require('importedFile2');
 require('importedFileWithSubRequire');
 require('importNested');
 require('nested2/*');
+require('importNotExisting');
