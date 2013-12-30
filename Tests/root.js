@@ -5,3 +5,5 @@
 require('importedFile1.js');
 require('importedFile2');
 require('importedFileWithSubRequire');
+require('importNested');
+require('nested2/*');

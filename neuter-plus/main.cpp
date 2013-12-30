@@ -14,11 +14,7 @@ using namespace Cundd;
 
 int main(int argc, const char * argv[]) {
 	bool useStandardOut = FALSE;
-	string inputFilePath = "", outputFilePath = "",
-			wrapBefore = "(function() {",
-			wrapAfter = "})()",
-			basePath = "",
-			combinedContents;
+	string inputFilePath = "", outputFilePath = "", combinedContents;
 	FileParser fileParser = FileParser();
 	ofstream outputFile;
 
@@ -32,11 +28,13 @@ int main(int argc, const char * argv[]) {
 			} else if (string(argv[i]) == "--output") {
 				outputFilePath = string(argv[i + 1]);
 			} else if (string(argv[i]) == "--basePath") {
-				basePath = string(argv[i + 1]);
+				fileParser.setBasePath(string(argv[i + 1]));
 			} else if (string(argv[i]) == "--wrapBefore") {
-				wrapBefore = string(argv[i + 1]);
+				fileParser.setWrapBefore(string(argv[i + 1]));
 			} else if (string(argv[i]) == "--wrapAfter") {
-				wrapAfter = string(argv[i + 1]);
+				fileParser.setWrapAfter(string(argv[i + 1]));
+			} else if (string(argv[i]) == "--separator") {
+				fileParser.setSeparator(string(argv[i + 1]));
 			} else if (string(argv[i]) == "--stdout") {
 				useStandardOut = TRUE;
 			} else {
@@ -56,9 +54,6 @@ int main(int argc, const char * argv[]) {
 		exit(1);
 	}
 
-	fileParser.setBasePath(basePath);
-	fileParser.setWrapBefore(wrapBefore);
-	fileParser.setWrapAfter(wrapAfter);
 
 	cout << "Try to read from file '" + inputFilePath + "'\n";
 	try {

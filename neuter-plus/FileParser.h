@@ -31,20 +31,28 @@ namespace Cundd {
 	class FileParser : Core {
 	protected:
 		string basePath;
-		string wrapBefore;
-		string wrapAfter;
-		
+		string wrapBefore = "(function() {";
+		string wrapAfter = "})()";
+		string separator = "\n\n";
+
+		void pad() {
+			cout << string((int)(combineFilesRecursiveDepth * 4), ' ');
+		}
+
+		static int combineFilesRecursiveDepth;
+
 	public:
 		string combineFilesRecursive(string rootFile);
 		void setBasePath(string newBasePath);
 		void setWrapBefore(string newWrap);
 		void setWrapAfter(string newWrap);
-		
+		void setSeparator(const string &separator);
+
 		StringDictionary getRequiredFileIdentifiers(string filePath);
 		vector<string> resolveFileIdentifier(string fileIdentifier);
 		vector<string> resolveFileIdentifierPattern(string fileIdentifier);
 		string getFileContents(const string& filePath);
-		string findAndReplaceInString(std::string &s, std::string search, std::string replace);
+		string findAndReplaceInString(std::string input, std::string search, std::string replace);
 		bool fileExists(const string& filePath);
 	};
 }
