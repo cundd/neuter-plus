@@ -27,6 +27,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		657B56B5188088ED00D48E8F /* MacOS */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MacOS; sourceTree = "<group>"; };
 		B02F128289C5F59511460B3B /* neuter_plus.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = neuter_plus.1; sourceTree = "<group>"; };
 		B02F1403BF3916D45FF8C6F2 /* FileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileParser.h; sourceTree = "<group>"; };
 		B02F140B432B7D7B033594D3 /* Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
@@ -83,6 +84,7 @@
 				B02F1ED07E4FE68AC1F954B0 /* FileNotFoundException.h */,
 				B02F18DE9C6C27178D957930 /* FileParser.cpp */,
 				B02F1403BF3916D45FF8C6F2 /* FileParser.h */,
+				657B56B5188088ED00D48E8F /* MacOS */,
 				B02F1DF45F7E895D0FC16848 /* Utilities */,
 			);
 			path = "neuter-plus";
@@ -241,6 +243,7 @@
 				B02F123AD7B2F03755BD59A5 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B02F12A1FB9CD427960732D0 /* Build configuration list for PBXProject "neuter-plus" */ = {
 			isa = XCConfigurationList;
