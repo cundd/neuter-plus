@@ -33,7 +33,7 @@ namespace Cundd {
 	protected:
 		string basePath;
 		string wrapBefore = "(function() {";
-		string wrapAfter = "})()";
+		string wrapAfter = "})();";
 		string separator = "\n\n";
 
 		void pad() {
