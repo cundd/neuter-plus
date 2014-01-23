@@ -22,7 +22,7 @@ int main(int argc, const char * argv[]) {
 	for (int i = 1; i < argc; i++) { /* We will iterate over argv[] to get the parameters stored inside.
 									  * Note that we're starting on 1 because we don't need to know the
 									  * path of the program, which is stored in argv[0] */
- 		if (i + 1 != argc) {// Check that we haven't finished parsing already
+ 		if (i != argc) {// Check that we haven't finished parsing already
 			if (string(argv[i]) == "--input") {
 				// We know the next argument *should* be the filename:
 				inputFilePath = string(argv[i + 1]);
@@ -50,7 +50,7 @@ int main(int argc, const char * argv[]) {
 		cout << "Please specify the input file path ('--input')" << endl;
 		exit(1);
 	}
-	if (outputFilePath == "") {
+	if (outputFilePath == "" && !useStandardOut) {
 		cout << "Please specify the output file path ('--output')" << endl;
 		exit(1);
 	}

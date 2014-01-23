@@ -28,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		657B56B5188088ED00D48E8F /* MacOS */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MacOS; sourceTree = "<group>"; };
+		657BDC801891A628009E74F1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		B02F128289C5F59511460B3B /* neuter_plus.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = neuter_plus.1; sourceTree = "<group>"; };
 		B02F1403BF3916D45FF8C6F2 /* FileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileParser.h; sourceTree = "<group>"; };
 		B02F140B432B7D7B033594D3 /* Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
@@ -65,8 +66,9 @@
 		B02F199C945A51D3D2BF7BAD = {
 			isa = PBXGroup;
 			children = (
-				B02F18BF85E3609F8A77E15E /* Products */,
 				B02F1E4FA781ED2FCC5AC46E /* neuter-plus */,
+				B02F18BF85E3609F8A77E15E /* Products */,
+				657BDC801891A628009E74F1 /* README.md */,
 				B02F1BE73296FC23D528E08D /* Tests */,
 			);
 			sourceTree = "<group>";
