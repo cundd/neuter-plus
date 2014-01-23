@@ -35,6 +35,7 @@ namespace Cundd {
 		string wrapBefore = "(function() {";
 		string wrapAfter = "})();";
 		string separator = "\n\n";
+		vector<string> loadedFiles;
 
 		void pad() {
 			cout << string((int)(combineFilesRecursiveDepth * 4), ' ');

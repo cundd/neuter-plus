@@ -54,16 +54,22 @@ string FileParser::combineFilesRecursive(string rootFile) {
 		mergedSubRequiredFileContent = separator;
 
 		for (string filePath : resolveFileIdentifier(fileIdentifier)) {
+			if (find(loadedFiles.begin(), loadedFiles.end(), filePath) != loadedFiles.end()) {
+#if CUNDD_DEBUG
+				pad(); cout << "====================================================================" << endl;
+				pad(); cout << "--------------------------------------------------------------------" << endl;
+				pad(); cout << "Skip " << filePath << " - already loaded" << endl;
+#endif
+				continue;
+			}
+			loadedFiles.push_back(filePath);
 			++combineFilesRecursiveDepth;
 			string subRequiredFileContent = combineFilesRecursive(filePath);
 			--combineFilesRecursiveDepth;
 
 #if CUNDD_DEBUG
-			pad(); cout << "====================================================================" << endl;
 			pad(); cout << "--------------------------------------------------------------------" << endl;
-			pad(); cout << "combineFilesRecursive: " << filePath << endl;
-			pad(); cout << "--------------------------------------------------------------------" << endl;
-			pad(); cout << coc << endl << endl;
+			pad(); cout << subRequiredFileContent << endl << endl;
 			pad(); cout << "--------------------------------------------------------------------" << endl;
 #endif
 
