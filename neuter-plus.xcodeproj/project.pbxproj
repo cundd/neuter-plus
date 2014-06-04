@@ -76,8 +76,6 @@
 		B02F1E4FA781ED2FCC5AC46E /* neuter-plus */ = {
 			isa = PBXGroup;
 			children = (
-				B02F172302A84E947D0E8209 /* main.cpp */,
-				B02F128289C5F59511460B3B /* neuter_plus.1 */,
 				B02F1A1318E7453C0156B571 /* Core.cpp */,
 				B02F140B432B7D7B033594D3 /* Core.h */,
 				B02F1DB8E5D0B90B548B9CA5 /* Exception.cpp */,
@@ -87,6 +85,8 @@
 				B02F18DE9C6C27178D957930 /* FileParser.cpp */,
 				B02F1403BF3916D45FF8C6F2 /* FileParser.h */,
 				657B56B5188088ED00D48E8F /* MacOS */,
+				B02F172302A84E947D0E8209 /* main.cpp */,
+				B02F128289C5F59511460B3B /* neuter_plus.1 */,
 				B02F1DF45F7E895D0FC16848 /* Utilities */,
 			);
 			path = "neuter-plus";
@@ -163,6 +163,7 @@
 		B02F1380D3A50B2D0301E536 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -31,6 +31,13 @@ namespace Cundd {
 	
 	class FileParser : Core {
 	protected:
+		bool verbose = FALSE;
+		
+		/**
+		 * Keep the require("filename") statements in the code if the filename could not be found
+		 */
+		bool keepUnresolvedIncludes = FALSE;
+		
 		string basePath;
 		string wrapBefore = "(function() {";
 		string wrapAfter = "})();";
@@ -50,6 +57,9 @@ namespace Cundd {
 		void setWrapBefore(string newWrap);
 		void setWrapAfter(string newWrap);
 		void setSeparator(const string &separator);
+		
+		void setVerbose(bool verbose);
+		void setKeepUnresolvedIncludes(bool flag);
 
 		StringDictionary getRequiredFileIdentifiers(string filePath);
 		vector<string> resolveFileIdentifier(string fileIdentifier);

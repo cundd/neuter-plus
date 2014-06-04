@@ -10,6 +10,10 @@
 #include "String.h"
 #include "FileParser.h"
 
+#ifndef NEUTER_VERSION
+	#define NEUTER_VERSION "0.1.2"
+#endif
+
 using namespace std;
 using namespace Cundd;
 
@@ -38,6 +42,20 @@ int main(int argc, const char * argv[]) {
 				fileParser.setSeparator(string(argv[i + 1]));
 			} else if (string(argv[i]) == "--stdout") {
 				useStandardOut = TRUE;
+				--i;
+			} else if (string(argv[i]) == "--keep-unresolved-includes") {
+				fileParser.setKeepUnresolvedIncludes(TRUE);
+				--i;
+			} else if (string(argv[i]) == "--verbose" || string(argv[i]) == "-v") {
+				fileParser.setVerbose(TRUE);
+				--i;
+			} else if (string(argv[i]) == "--version") {
+				cout << "neuter-plus " << NEUTER_VERSION;
+#if DEBUG
+				cout << "-dev";
+#endif
+				cout << endl;
+				exit(0);
 			} else {
 				cout << "Not enough or invalid arguments" << endl;
 				exit(1);
@@ -68,7 +86,8 @@ int main(int argc, const char * argv[]) {
 			outputFile.close();
 		}
 	} catch (Exception e) {
-		cout << e.getMessage();
+		cerr << e.getMessage();
+		return 1;
 	}
 	return 0;
 }

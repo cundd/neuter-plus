@@ -17,7 +17,9 @@ StringDictionary FileParser::getRequiredFileIdentifiers(string filePath) {
 	smatch result;
 	StringDictionary requiredFiles;
 
-	filePath = basePath + filePath;
+	if (filePath.substr(0, 1) != "/") {
+		filePath = basePath + filePath;
+	}
 	ifstream inputFile(filePath.c_str());
 
 	const regex pattern = regex("^\\s*require\\(['\"]([^'\"]+)['\"]\\);", std::regex_constants::icase);
@@ -25,14 +27,18 @@ StringDictionary FileParser::getRequiredFileIdentifiers(string filePath) {
 	if (inputFile.is_open()) {
 		while (getline(inputFile, line)) {
 			if (regex_match(line, result, pattern)) {
-#if CUNDD_DEBUG
-				pad(); cout << "====================================================================" << endl;
-				pad(); cout << "Matching: " << result[0] << endl;
-#endif
+
+				if (verbose) {
+//					pad(); cout << "====================================================================" << endl;
+					pad(); cout << "Matching: " << result[0] << endl;
+				}
+
 				requiredFiles[result[1]] = result[0];
 			}
 		}
 		inputFile.close();
+	} else {
+		throw FileNotFoundException("Could not open file '" + filePath + "'");
 	}
 	return requiredFiles;
 }
@@ -40,9 +46,16 @@ StringDictionary FileParser::getRequiredFileIdentifiers(string filePath) {
 string FileParser::combineFilesRecursive(string rootFile) {
 	string rootFilePath = rootFile;
 	string mergedSubRequiredFileContent = "";
-	StringDictionary requiredFileIdentifiers = getRequiredFileIdentifiers(rootFile);
 	string rootFileContents;
-
+	
+	if (verbose) {
+		pad(); cout << "====================================================================" << endl;
+		pad(); cout << "Analyse file: " << rootFile << endl;
+	}
+	
+	StringDictionary requiredFileIdentifiers = getRequiredFileIdentifiers(rootFile);
+	
+	
 	if (rootFilePath.substr(0, 1) != "/") {
 		rootFilePath = basePath + rootFilePath;
 	}
@@ -51,9 +64,11 @@ string FileParser::combineFilesRecursive(string rootFile) {
 	for (StringDictionary::iterator it = requiredFileIdentifiers.begin(); it != requiredFileIdentifiers.end(); ++it) {
 		string fileIdentifier = it->first;
 		string fileIncludeCode = it->second;
+		bool couldNotResolveAnyFiles = TRUE;
 		mergedSubRequiredFileContent = separator;
 
 		for (string filePath : resolveFileIdentifier(fileIdentifier)) {
+			couldNotResolveAnyFiles = FALSE;
 			if (find(loadedFiles.begin(), loadedFiles.end(), filePath) != loadedFiles.end()) {
 #if CUNDD_DEBUG
 				pad(); cout << "====================================================================" << endl;
@@ -63,6 +78,7 @@ string FileParser::combineFilesRecursive(string rootFile) {
 				continue;
 			}
 			loadedFiles.push_back(filePath);
+			
 			++combineFilesRecursiveDepth;
 			string subRequiredFileContent = combineFilesRecursive(filePath);
 			--combineFilesRecursiveDepth;
@@ -90,13 +106,16 @@ string FileParser::combineFilesRecursive(string rootFile) {
 		pad(); cout << "--------------------------------------------------------------------" << endl;
 		pad(); cout << "replace " << fileIncludeCode << endl;
 #endif
-		mergedSubRequiredFileContent =
-				wrapBefore
-						+ "/*" + StringUtility::findAndReplaceInString(fileIncludeCode, "/", "\\/") + "// */"
-						+ mergedSubRequiredFileContent
-						+ wrapAfter
-						+ separator;
-		rootFileContents = StringUtility::findAndReplaceInString(rootFileContents, fileIncludeCode, mergedSubRequiredFileContent);
+		
+		if (couldNotResolveAnyFiles == FALSE || !keepUnresolvedIncludes) {
+			mergedSubRequiredFileContent =
+					wrapBefore
+							+ "/*" + StringUtility::findAndReplaceInString(fileIncludeCode, "/", "\\/") + "// */"
+							+ mergedSubRequiredFileContent
+							+ wrapAfter
+							+ separator;
+			rootFileContents = StringUtility::findAndReplaceInString(rootFileContents, fileIncludeCode, mergedSubRequiredFileContent);
+		}
 
 #if CUNDD_DEBUG
 		pad(); cout << "--------------------------------------------------------------------" << endl;
@@ -139,6 +158,9 @@ vector<string> FileParser::resolveFileIdentifier(string fileIdentifier) {
 	if (fileIdentifier.find("*") != string::npos) {
 		return resolveFileIdentifierPattern(fileIdentifier);
 	}
+	
+	if (verbose) pad();
+	cerr << "File with identifier '" + fileIdentifier + "' not found" << endl;
 
 	return {};
 	throw FileNotFoundException("File with identifier '" + fileIdentifier + "' not found");
@@ -177,4 +199,12 @@ void FileParser::setWrapAfter(string newWrap) {
 
 void FileParser::setSeparator(const string &newSeparator) {
 	separator = newSeparator;
+}
+
+void FileParser::setVerbose(bool flag) {
+	verbose = flag;
+}
+
+void FileParser::setKeepUnresolvedIncludes(bool flag) {
+	keepUnresolvedIncludes = flag;
 }

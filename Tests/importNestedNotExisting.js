@@ -1,3 +1,3 @@
 window.nested = {};
-require('nested/file1');
+require('not-existing-file');
 window.fileCounter++;

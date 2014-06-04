@@ -1,1 +1,0 @@
-window.subRequiredFile = true;
