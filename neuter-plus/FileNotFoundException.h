@@ -15,13 +15,14 @@
 using namespace Cundd;
 
 namespace Cundd {
-	class FileNotFoundException : public Exception {
-	public:
-		const FileNotFoundException(const string& exceptionMessage) : Exception(exceptionMessage) {};
-	//public:
-	//	FileNotFoundException(const string&) {}
-	//	FileNotFoundException(const char*) {}
-	};
+class FileNotFoundException : public Exception {
+public:
+    FileNotFoundException(const std::string& exceptionMessage)
+        : Exception(exceptionMessage){};
+    //public:
+    //	FileNotFoundException(const string&) {}
+    //	FileNotFoundException(const char*) {}
+};
 }
 
 #endif /* defined(__Stringer__FileNotFoundException__) */

@@ -20,9 +20,8 @@
 #define FALSE false
 
 namespace Cundd {
-	class Core {
-		
-	};
+class Core {
+};
 }
 
 #endif /* defined(__Stringer__Core__) */

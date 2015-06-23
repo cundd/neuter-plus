@@ -10,29 +10,29 @@
 	<string>neuter-plus</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>48086A24-EAD3-4628-8434-86D1B1F28AD1</key>
-		<string>ssh://github.com/cundd/neuter-plus.git</string>
+		<key>2724337D9CB3A4BCE9B14CD5012A53A57E344FA9</key>
+		<string>https://github.com/cundd/neuter-plus.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>neuter-plus.xcodeproj/project.xcworkspace</string>
+	<string>neuter-plus.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>48086A24-EAD3-4628-8434-86D1B1F28AD1</key>
+		<key>2724337D9CB3A4BCE9B14CD5012A53A57E344FA9</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/cundd/neuter-plus.git</string>
+	<string>https://github.com/cundd/neuter-plus.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>48086A24-EAD3-4628-8434-86D1B1F28AD1</string>
+	<string>2724337D9CB3A4BCE9B14CD5012A53A57E344FA9</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>48086A24-EAD3-4628-8434-86D1B1F28AD1</string>
+			<string>2724337D9CB3A4BCE9B14CD5012A53A57E344FA9</string>
 			<key>IDESourceControlWCCName</key>
 			<string>neuter-plus</string>
 		</dict>

@@ -14,13 +14,21 @@
 using namespace std;
 
 namespace Cundd {
-	class Exception : public exception {
-	protected:
-		string message;
-	public:
-		Exception(const string&);
-		string getMessage();
-	};
+class Exception : public exception {
+protected:
+    string message;
+
+public:
+    Exception(const string& message)
+        : message(message)
+    {
+    }
+
+    string& getMessage()
+    {
+        return message;
+    }
+};
 }
 
 #endif /* defined(__Stringer__Exception__) */

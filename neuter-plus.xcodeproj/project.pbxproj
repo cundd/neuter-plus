@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B02F17A55B50219992686E9C /* Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B02F1DB8E5D0B90B548B9CA5 /* Exception.cpp */; };
 		B02F17D81C95C17EA858402B /* FileParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B02F18DE9C6C27178D957930 /* FileParser.cpp */; };
 		B02F1B70A9D7E74F3C7D7354 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B02F172302A84E947D0E8209 /* main.cpp */; };
-		B02F1F31458BB84D4146D80E /* FileNotFoundException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B02F1CE5F81C0B9143C5FE70 /* FileNotFoundException.cpp */; };
-		B02F1F6A524FCE08CAB21719 /* Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B02F1A1318E7453C0156B571 /* Core.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,11 +32,8 @@
 		B02F172302A84E947D0E8209 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B02F18DE9C6C27178D957930 /* FileParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileParser.cpp; sourceTree = "<group>"; };
 		B02F19B0E57B686B4DAAEAF1 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
-		B02F1A1318E7453C0156B571 /* Core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Core.cpp; sourceTree = "<group>"; };
 		B02F1BE73296FC23D528E08D /* Tests */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = Tests; sourceTree = "<group>"; };
-		B02F1CE5F81C0B9143C5FE70 /* FileNotFoundException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileNotFoundException.cpp; sourceTree = "<group>"; };
 		B02F1D59E55D06E91485057A /* neuter-plus */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "neuter-plus"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B02F1DB8E5D0B90B548B9CA5 /* Exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exception.cpp; sourceTree = "<group>"; };
 		B02F1DF45F7E895D0FC16848 /* Utilities */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Utilities; sourceTree = "<group>"; };
 		B02F1ED07E4FE68AC1F954B0 /* FileNotFoundException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileNotFoundException.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,11 +70,8 @@
 		B02F1E4FA781ED2FCC5AC46E /* neuter-plus */ = {
 			isa = PBXGroup;
 			children = (
-				B02F1A1318E7453C0156B571 /* Core.cpp */,
 				B02F140B432B7D7B033594D3 /* Core.h */,
-				B02F1DB8E5D0B90B548B9CA5 /* Exception.cpp */,
 				B02F19B0E57B686B4DAAEAF1 /* Exception.h */,
-				B02F1CE5F81C0B9143C5FE70 /* FileNotFoundException.cpp */,
 				B02F1ED07E4FE68AC1F954B0 /* FileNotFoundException.h */,
 				B02F18DE9C6C27178D957930 /* FileParser.cpp */,
 				B02F1403BF3916D45FF8C6F2 /* FileParser.h */,
@@ -143,9 +134,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B02F1B70A9D7E74F3C7D7354 /* main.cpp in Sources */,
-				B02F1F6A524FCE08CAB21719 /* Core.cpp in Sources */,
-				B02F17A55B50219992686E9C /* Exception.cpp in Sources */,
-				B02F1F31458BB84D4146D80E /* FileNotFoundException.cpp in Sources */,
 				B02F17D81C95C17EA858402B /* FileParser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
